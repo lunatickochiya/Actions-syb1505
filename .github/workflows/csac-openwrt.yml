@@ -110,14 +110,6 @@ jobs:
         make -j$(nproc) || make -j1 V=s
         echo "::set-output name=status::success"
 
-    - name: After Build
-      id: afb
-      if: steps.compile.outputs.status == 'success' && !cancelled()
-      run: |
-        cd openwrt
-        ../$AFB_SH
-        echo "::set-output name=status::success"
-
     - name: Organize files
       id: organize
       if: env.UPLOAD_FIRMWARE == 'true' && !cancelled()
@@ -132,6 +124,14 @@ jobs:
       with:
         name: OpenWrt_firmware
         path: ${{ env.FIRMWARE }}
+
+    - name: After Build
+      id: afb
+      if: steps.compile.outputs.status == 'success' && !cancelled()
+      run: |
+        cd openwrt
+        ../$AFB_SH
+        echo "::set-output name=status::success"
 
     - name: Upload packages
       uses: actions/upload-artifact@master
