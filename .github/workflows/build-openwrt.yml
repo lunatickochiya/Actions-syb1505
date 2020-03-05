@@ -137,7 +137,7 @@ jobs:
       uses: actions/upload-artifact@master
       with:
         name: OpenWrt_packages
-        path: openwrt/bin/*/packages
+        path: openwrt/bin/packages
 
     - name: Upload sysupgrade directory
       uses: actions/upload-artifact@master
