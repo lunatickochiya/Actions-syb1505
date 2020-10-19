@@ -91,7 +91,7 @@ jobs:
       id: package
       run: |
         cd openwrt
-        make download -j8
+        make download V=s
         find dl -size -1024c -exec ls -l {} \;
         find dl -size -1024c -exec rm -f {} \;
 
@@ -115,7 +115,7 @@ jobs:
       id: organize
       if: env.UPLOAD_FIRMWARE == 'true' && !cancelled()
       run: |
-        cd openwrt/bin/targets/*/*
+        cd openwrt/bin/*
         echo "::set-env name=FIRMWARE::$(pwd)"
         echo "::set-output name=status::success"
 
