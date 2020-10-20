@@ -10,6 +10,8 @@ mkdir out
 mkdir bin/packages
 rm -rf build_dir/target* build_dir/toolchain* staging_dir/target* staging_dir/toolchain*
 cp -u -f bin/*/*-*-squashfs-sysupgrade.bin out/
+cp -u -f bin/*/*/OpenWrt-SDK* out/
 cp -u -f bin/*/packages/* bin/packages/
+
 # Enter your commands here, e.g.
 echo "Copy Success!"
