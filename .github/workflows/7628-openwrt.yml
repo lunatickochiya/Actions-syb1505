@@ -128,9 +128,17 @@ jobs:
 
     - name: Upload packages
       uses: actions/upload-artifact@master
+      if: steps.afb.outputs.status == 'success' && !cancelled()
       with:
         name: OpenWrt_packages
-        path: openwrt/bin/packages
+        path: openwrt/ipks
+
+    - name: Upload SDK
+      uses: actions/upload-artifact@master
+      if: steps.afb.outputs.status == 'success' && !cancelled()
+      with:
+        name: OpenWrt_sdk
+        path: openwrt/sdk
 
     - name: Upload sysupgrade directory
       uses: actions/upload-artifact@master
