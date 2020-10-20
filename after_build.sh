@@ -7,11 +7,12 @@
 
 #cd openwrt
 mkdir out
-mkdir bin/packages
+mkdir sdk
+mkdir ipks
 rm -rf build_dir/target* build_dir/toolchain* staging_dir/target* staging_dir/toolchain*
 cp -u -f bin/*/*-*-squashfs-sysupgrade.bin out/
-cp -u -f bin/*/OpenWrt-SDK* out/
-cp -u -f bin/*/packages/* bin/packages/
+cp -u -f bin/*/OpenWrt-SDK* sdk/
+cp -u -f bin/*/packages/* ipks/
 
 # Enter your commands here, e.g.
 echo "Copy Success!"
